@@ -1,33 +1,54 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <CheckBoxPreference
-        android:key="example_checkbox"
-        android:title="@string/pref_title_social_recommendations"
-        android:summary="@string/pref_description_social_recommendations"
-        android:defaultValue="true" />
+<PreferenceCategory android:title="@string/pref_title">
+    <EditTextPreference android:title="@string/hostname" android:key="hostname" android:summary="@string/hostname_summary">
 
-    <!-- NOTE: EditTextPreference accepts EditText attributes. -->
-    <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
-    <EditTextPreference
-        android:key="example_text"
-        android:title="@string/pref_title_display_name"
-        android:defaultValue="@string/pref_default_display_name"
-        android:selectAllOnFocus="true"
-        android:inputType="textCapWords"
-        android:capitalize="words"
-        android:singleLine="true"
-        android:maxLines="1" />
+    </EditTextPreference>
 
-    <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
-         dismiss it. -->
-    <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
-    <ListPreference
-        android:key="example_list"
-        android:title="@string/pref_title_add_friends_to_messages"
-        android:defaultValue="-1"
-        android:entries="@array/pref_example_list_titles"
-        android:entryValues="@array/pref_example_list_values"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null" />
+    <EditTextPreference android:title="@string/port" android:key="port" android:summary="@string/port_summary">
+
+    </EditTextPreference>
+
+    <EditTextPreference android:title="@string/username" android:key="username" android:summary="@string/username_summary">
+
+    </EditTextPreference>
+
+    <EditTextPreference android:title="@string/password" android:key="password" android:summary="@string/password_summary">
+
+    </EditTextPreference>
+
+
+
+</PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/notifications" android:summary="@string/notifications_desc" >
+        <CheckBoxPreference
+            android:defaultValue="@bool/enable_notifications"
+            android:key="enable_notifications"
+            android:summary="@string/enable_notifications_desc"
+            android:title="@string/enable_notifications" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="@bool/enable_sound"
+            android:dependency="enable_notifications"
+            android:key="enable_sound"
+            android:summary="@string/enable_sound_desc"
+            android:title="@string/enable_sound" />
+        <CheckBoxPreference
+            android:defaultValue="@bool/enable_vibrate"
+            android:dependency="enable_notifications"
+            android:key="enable_vibrate"
+            android:summary="@string/enable_vibrate_desc"
+            android:title="@string/enable_vibrate" />
+        <CheckBoxPreference
+            android:defaultValue="@bool/enable_led"
+            android:dependency="enable_notifications"
+            android:key="enable_led"
+            android:summary="@string/enable_led_desc"
+            android:title="@string/enable_led" />
+
+
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
