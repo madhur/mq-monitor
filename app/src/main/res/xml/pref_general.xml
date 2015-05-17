@@ -53,11 +53,7 @@
     <!--</PreferenceCategory>-->
 
     <PreferenceCategory android:title="@string/sync_options">
-        <CheckBoxPreference
-            android:defaultValue="@bool/enable_autosync"
-            android:key="enable_autosync"
-            android:summary="@string/enable_autosync_desc"
-            android:title="@string/enable_autosync" />
+
 
         <ListPreference
             android:defaultValue="@string/sync_interval_default"

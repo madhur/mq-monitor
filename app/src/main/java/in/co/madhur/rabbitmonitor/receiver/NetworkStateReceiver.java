@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import in.co.madhur.rabbitmonitor.Constants;
 import in.co.madhur.rabbitmonitor.request.GetDataService;
 
 /**
@@ -25,7 +26,7 @@ public class NetworkStateReceiver extends BroadcastReceiver
             if (ni != null && ni.getState() == NetworkInfo.State.CONNECTED)
             {
                 Intent serviceIntent=new Intent();
-
+                serviceIntent.putExtra(Constants.UPDATE_SOURCE, Constants.UPDATESOURCE.NETWORK_CHANGE.key);
                 serviceIntent.setClass(context, GetDataService.class);
                 context.startService(serviceIntent);
             }

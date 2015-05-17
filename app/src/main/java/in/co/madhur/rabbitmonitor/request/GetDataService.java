@@ -52,6 +52,8 @@ public class GetDataService extends Service {
 
         Log.d(Constants.TAG, url);
 
+        Toast.makeText(getApplicationContext(), getString(R.string.sync_started), Toast.LENGTH_SHORT).show();
+
         GsonRequest<Queue[]> jsObjRequest = new GsonRequest<>
                 (Request.Method.GET, url, Queue[].class, new Response.Listener<Queue[]>() {
 

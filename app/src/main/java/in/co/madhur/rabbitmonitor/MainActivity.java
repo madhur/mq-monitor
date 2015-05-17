@@ -33,6 +33,16 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         PreferenceManager.setDefaultValues(this, R.xml.pref_general, false);
+
+        // Setup alarm if it doesn't exist
+        Alarms alarms = new Alarms(this);
+
+        if (!alarms.DoesAlarmExist())
+        {
+            if (alarms.ShouldSchedule())
+                alarms.Schedule();
+        }
+
     }
 
     @Override

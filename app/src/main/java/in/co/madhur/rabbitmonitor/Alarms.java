@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import in.co.madhur.rabbitmonitor.request.GetDataService;
 
@@ -42,6 +43,21 @@ public class Alarms
         alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, 0, recurInterval, GetPendingIntentAlarm(context) );
     }
 
+    public boolean DoesAlarmExist()
+    {
+        PendingIntent existingIntent=PendingIntent.getBroadcast(context, REQUEST_CODE_ALARM, GetIntent(Constants.UPDATESOURCE.ALARM), PendingIntent.FLAG_NO_CREATE);
+
+        if(existingIntent!=null)
+        {
+            Log.d(App.TAG, "Alarm exists");
+            return true;
+        }
+
+        Log.d(App.TAG, "Alarm doesn't exist , scheduling");
+        return false;
+    }
+
+
     private PendingIntent GetPendingIntentAlarm(Context context)
     {
         Intent updateIntent=new Intent();
@@ -53,13 +69,14 @@ public class Alarms
 
     public PendingIntent GetPendingIntentWidget(int requestCode, Context context)
     {
-        return PendingIntent.getBroadcast(context, requestCode, GetIntent(), PendingIntent.FLAG_ONE_SHOT);
+        return PendingIntent.getBroadcast(context, requestCode, GetIntent(Constants.UPDATESOURCE.ALARM), PendingIntent.FLAG_ONE_SHOT);
     }
 
-    private Intent GetIntent()
+    private Intent GetIntent(Constants.UPDATESOURCE source)
     {
         Intent updateIntent=new Intent();
         updateIntent.setAction(Constants.UPDATE_ACTION);
+        updateIntent.putExtra(Constants.UPDATE_SOURCE, source.key);
         return updateIntent;
     }
 
