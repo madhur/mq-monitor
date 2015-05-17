@@ -1,32 +1,18 @@
 package in.co.madhur.rabbitmonitor;
 
-import android.annotation.TargetApi;
-import android.content.Context;
 import android.content.res.Configuration;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceCategory;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
-import android.preference.RingtonePreference;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-
-import java.util.List;
+import android.widget.LinearLayout;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -62,11 +48,7 @@ public class SettingsActivity extends PreferenceActivity {
         getDelegate().onCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
 
-        //Finally, let's add the Toolbar
-        //getDelegate().setContentView(R.layout.settings_toolbar);
-       // setContentView(R.layout.settings_toolbar);
-        //Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
-        //getDelegate().setSupportActionBar(toolbar);
+
     }
 
     @Override
@@ -74,6 +56,23 @@ public class SettingsActivity extends PreferenceActivity {
         super.onPostCreate(savedInstanceState);
         getDelegate().onPostCreate(savedInstanceState);
         setupSimplePreferencesScreen();
+
+        LinearLayout root = (LinearLayout)findViewById(android.R.id.list).getParent().getParent().getParent();
+        Toolbar bar = (Toolbar) LayoutInflater.from(this).inflate(R.layout.settings_toolbar, root, false);
+        root.addView(bar, 0); // insert at top
+        bar.setTitle(getString(R.string.app_name));
+
+        setSupportActionBar(bar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        bar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
+
     }
 
     /**
