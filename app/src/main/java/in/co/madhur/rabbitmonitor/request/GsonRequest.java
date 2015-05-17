@@ -62,10 +62,10 @@ public class GsonRequest<T> extends Request<T> {
         listener.onResponse(response);
     }
 
-//    @Override
-//    public Map<String, String> getHeaders() throws AuthFailureError {
-//        return AuthUtil.getBasicAuth();
-//    }
+    @Override
+    public Map<String, String> getHeaders() throws AuthFailureError {
+        return AuthUtil.getBasicAuth();
+    }
 
     @Override
     public Priority getPriority() {

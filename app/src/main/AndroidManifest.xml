@@ -24,6 +24,64 @@
             </intent-filter>
 
         </activity>
+
+        <receiver
+            android:name=".widget.LargeWidgetProvider"
+            android:label="MQ Monitor Large" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="in.co.madhur.ACTION.UPDATE" />
+
+
+                <category android:name="in.co.madhur.ACTION.CATEGORY.WIDGET" />
+            </intent-filter>
+
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/mq_widget_large" />
+        </receiver>
+        <receiver
+            android:name=".widget.MediumWidgetProvider"
+            android:label="MQ Monitor Medium" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="in.co.madhur.ACTION.UPDATE" />
+
+
+                <category android:name="in.co.madhur.ACTION.CATEGORY.WIDGET" />
+            </intent-filter>
+
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/mq_widget_medium" />
+        </receiver>
+        <receiver
+            android:name=".widget.SmallWidgetProvider"
+            android:label="MQ Monitor Small" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="in.co.madhur.ACTION.UPDATE" />
+
+
+                <category android:name="in.co.madhur.ACTION.CATEGORY.WIDGET" />
+            </intent-filter>
+
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/mq_widget_small" />
+        </receiver>
+
+        <service android:name=".request.GetDataService"></service>
+
     </application>
 
 </manifest>

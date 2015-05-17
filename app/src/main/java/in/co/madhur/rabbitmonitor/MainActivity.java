@@ -13,8 +13,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
-import org.json.JSONObject;
-
+import in.co.madhur.rabbitmonitor.api.Overview;
 import in.co.madhur.rabbitmonitor.request.GsonRequest;
 
 /**
@@ -63,9 +62,9 @@ public class MainActivity extends AppCompatActivity {
      */
     private void refreshStatus()
     {
-        AppPreferences appPreferences = new AppPreferences(this);
-        String hostName = appPreferences.getMetadata(AppPreferences.Keys.HOSTNAME);
-        String port = appPreferences.getMetadata(AppPreferences.Keys.PORT);
+        final AppPreferences appPreferences = new AppPreferences(this);
+        final String hostName = appPreferences.getMetadata(AppPreferences.Keys.HOSTNAME);
+        final String port = appPreferences.getMetadata(AppPreferences.Keys.PORT);
 
         if(hostName.length()==0 || port.length()==0)
         {
@@ -73,15 +72,15 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        String url = "http://"+hostName+":"+port+Constants.OVERVIEW_API;
+        final String url = "http://"+hostName+":"+port+Constants.OVERVIEW_API;
 
         Log.d(Constants.TAG, url);
 
-        GsonRequest jsObjRequest = new GsonRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        GsonRequest<Overview> jsObjRequest = new GsonRequest<>
+                (Request.Method.GET, url, Overview.class, new Response.Listener<Overview>() {
 
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(Overview response) {
                         Log.d(Constants.TAG, response.toString());
                     }
                 }, new Response.ErrorListener() {
@@ -89,7 +88,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // TODO Auto-generated method stub
-                        if(error.networkResponse.statusCode==401)
+                        if(error==null)
+                            return;
+
+                        if(error.networkResponse!=null && error.networkResponse.statusCode==401)
                         {
                             Toast.makeText(MainActivity.this, getString(R.string.invalid_creds), Toast.LENGTH_SHORT).show();
                             return;
@@ -98,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-// Access the RequestQueue through your singleton class.
         App.getInstance().getRequestQueue().add(jsObjRequest);
 
 

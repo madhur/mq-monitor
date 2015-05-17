@@ -2,7 +2,7 @@ package in.co.madhur.rabbitmonitor.request;
 
 import android.util.Base64;
 
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -18,7 +18,8 @@ public final class AuthUtil {
     public static Map<String, String> getBasicAuth() {
 
 
-        Map<String, String> requestParams = Collections.emptyMap();
+        Map<String, String> requestParams = new HashMap<String, String>();
+
         String creds = String.format("%s:%s", "guest", "guest");
         String auth = "Basic "
                 + Base64.encodeToString(creds.getBytes(), Base64.NO_WRAP);

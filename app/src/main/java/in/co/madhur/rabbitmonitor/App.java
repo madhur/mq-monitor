@@ -8,6 +8,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
+import com.crittercism.app.Crittercism;
 
 /**
  * Created by madhur on 4/26/15.
@@ -16,10 +17,16 @@ public class App extends Application {
 
     private RequestQueue requestQueue;
     private static App instance;
+    public static final String TAG="mqmonitor";
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        if(!BuildConfig.DEBUG)
+        {
+            Crittercism.initialize(this, "526e3508e432f557fe000008");
+        }
 
         instance = this;
     }
