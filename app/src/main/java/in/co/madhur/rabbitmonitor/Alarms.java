@@ -54,5 +54,5 @@ public class Alarms
         updateIntent.setClass(context, GetDataService.class);
         context.startService(updateIntent);
     }
-    
+
 }
