@@ -36,9 +36,9 @@ public class Alarms
     }
 
 
-    public PendingIntent GetPendingIntentWidget(Context context)
+    public PendingIntent GetPendingIntentWidget(int requestCode, Context context)
     {
-        return PendingIntent.getBroadcast(context, REQUEST_CODE_WIDGET, GetIntent(), PendingIntent.FLAG_ONE_SHOT);
+        return PendingIntent.getBroadcast(context, requestCode, GetIntent(), PendingIntent.FLAG_ONE_SHOT);
     }
 
     private Intent GetIntent()

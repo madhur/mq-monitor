@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
-import in.co.madhur.rabbitmonitor.api.queue.Queue;
-
 /**
  * Created by madhur on 13/05/15.
  */
@@ -137,6 +135,14 @@ public class AppPreferences {
         {
             return 0;
         }
+
+    }
+
+    public void SaveSuccessfulSync()
+    {
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.putLong(Keys.LAST_SUCCESSFUL_SYNC.key, System.currentTimeMillis());
+        edit.commit();
 
     }
 

@@ -101,7 +101,7 @@ public class WidgetProvider extends AppWidgetProvider {
 
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.mq_appwidget);
 
-        SetupLookAndFeel(context, remoteViews, appPreferences);
+        SetupLookAndFeel(context, remoteViews, appPreferences, appWidgetId);
 
         Intent svcIntent = new Intent(context, WidgetsService.class);
         svcIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
@@ -141,7 +141,7 @@ public class WidgetProvider extends AppWidgetProvider {
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private void SetupLookAndFeel(Context context, RemoteViews remoteViews, AppPreferences appPreferences)
+    private void SetupLookAndFeel(Context context, RemoteViews remoteViews, AppPreferences appPreferences, int appWidgetId)
     {
 
         remoteViews.setInt(R.id.widget_host, "setBackgroundColor", appPreferences.GetColor(AppPreferences.Keys.WIDGET_BACKGROUND_COLOR));
@@ -168,7 +168,7 @@ public class WidgetProvider extends AppWidgetProvider {
             remoteViews.setViewVisibility(R.id.widget_settings, View.VISIBLE);
 
             remoteViews.setOnClickPendingIntent(R.id.widget_icon, GetPendingIntent(context.getPackageManager().getLaunchIntentForPackage(context.getPackageName()), context));
-            remoteViews.setOnClickPendingIntent(R.id.widget_refresh, new Alarms(context).GetPendingIntentWidget(context));
+            remoteViews.setOnClickPendingIntent(R.id.widget_refresh, new Alarms(context).GetPendingIntentWidget(appWidgetId , context));
             remoteViews.setOnClickPendingIntent(R.id.widget_settings, GetSettingsPendingIntent(context));
 
         }

@@ -12,7 +12,9 @@ public class Constants {
 
     public static final String UPDATE_ACTION="in.co.madhur.ACTION.UPDATE";
 
-    public static final String CATEGORY_WIDGET="in.co.madhur.ACTION.CATEGORY.WIDGET";
+    public static final String REFRESH_ACTION="in.co.madhur.ACTION.REFRESH";
+
+
 
 
 }

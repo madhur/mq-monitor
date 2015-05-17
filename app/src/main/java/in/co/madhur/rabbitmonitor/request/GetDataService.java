@@ -57,9 +57,13 @@ public class GetDataService extends Service {
 
                     @Override
                     public void onResponse(Queue[] response) {
-                        Log.d(Constants.TAG, response.toString());
+                        Log.d(Constants.TAG, "Got the data");
 
                         App.getInstance().setQueueData(response);
+
+                        appPreferences.SaveSuccessfulSync();
+
+                        SendUpdateBroadcast();
 
                         stopSelf();
                     }
@@ -81,6 +85,15 @@ public class GetDataService extends Service {
                 }, userName, password);
 
         App.getInstance().getRequestQueue().add(jsObjRequest);
+
+    }
+
+    private void SendUpdateBroadcast()
+    {
+        // Send update broadcast for widgets
+        Intent updateIntent = new Intent();
+        updateIntent.setAction(Constants.REFRESH_ACTION);
+        sendBroadcast(updateIntent);
 
     }
 }
