@@ -22,7 +22,7 @@
     <string name="hostname">Hostname</string>
     <string name="hostname_summary">Hostname for RabbitMQ</string>
     <string name="port">Port</string>
-    <string name="port_summary">Port for RabbitMQ</string>
+    <string name="port_summary">RabbitMQ Management port. Default is 15672. The port for RabbitMQ versions prior to 3.0 is 55672.</string>
     <string name="username">Username</string>
     <string name="username_summary">Username for RabbitMQ</string>
     <string name="password">Password</string>

@@ -6,15 +6,15 @@
 
     </EditTextPreference>
 
-    <EditTextPreference android:title="@string/port" android:inputType="number"  android:key="port" android:summary="@string/port_summary">
+    <EditTextPreference android:title="@string/port" android:inputType="number"  android:key="port" android:defaultValue="15672" android:summary="@string/port_summary">
 
     </EditTextPreference>
 
-    <EditTextPreference android:title="@string/username" android:key="username"  android:summary="@string/username_summary">
+    <EditTextPreference android:title="@string/username" android:key="username" android:defaultValue="guest"  android:summary="@string/username_summary">
 
     </EditTextPreference>
 
-    <EditTextPreference android:title="@string/password" android:key="password" android:inputType="textPassword" android:summary="@string/password_summary">
+    <EditTextPreference android:title="@string/password" android:key="password" android:inputType="textPassword" android:defaultValue="guest" android:summary="@string/password_summary">
 
     </EditTextPreference>
 
