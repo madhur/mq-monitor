@@ -11,6 +11,7 @@ public class Constants {
     public static final String TAG="mqmonitor";
 
     public static final String UPDATE_ACTION="in.co.madhur.ACTION.UPDATE";
+    public static final String UPDATE_OVERVIEW_ACTION="in.co.madhur.ACTION.UPDATE_OVERVIEW";
 
     public static final String REFRESH_ACTION="in.co.madhur.ACTION.REFRESH";
 

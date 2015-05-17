@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RabbitMQ Q Monitor</string>
+    <string name="app_name">RabbitMQ Monitor</string>
 
     <string name="sync_interval">Sync interval</string>
     <string name="sync_interval_desc">How often should synchronize?</string>
@@ -190,4 +190,12 @@
 
     <string name="follow_twitter">Follow me on Twitter</string>
     <string name="about_content">v1.0 \nDeveloped by Madhur \n\nReport any issues to ahuja.madhur@gmail.com</string>
+    <string name="error_occurred">Error occurred! Please check your settings</string>
+    <string name="rabbitmq_version">RabbitMQ Version</string>
+    <string name="erlang_version">Erlang Version</string>
+    <string name="consumers">Consumers</string>
+    <string name="queues">Queues</string>
+    <string name="exchanges">Exchanges</string>
+    <string name="connections">Connections</string>
+    <string name="channels">Channels</string>
 </resources>

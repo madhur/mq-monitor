@@ -3,6 +3,7 @@ package in.co.madhur.rabbitmonitor.request;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -29,12 +30,12 @@ public class GetDataService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        createRequest();
+        createRequest(intent);
 
         return START_NOT_STICKY;
     }
 
-    private void createRequest()
+    private void createRequest(Intent intent)
     {
         final AppPreferences appPreferences = new AppPreferences(this);
         final String hostName = appPreferences.getMetadata(AppPreferences.Keys.HOSTNAME);
@@ -52,7 +53,17 @@ public class GetDataService extends Service {
 
         Log.d(Constants.TAG, url);
 
-        Toast.makeText(getApplicationContext(), getString(R.string.sync_started), Toast.LENGTH_SHORT).show();
+        String source = intent.getStringExtra(Constants.UPDATE_SOURCE);
+
+        if (!TextUtils.isEmpty(source)) {
+            Log.d(App.TAG, "Starting update because of " + source);
+
+            if (source.equalsIgnoreCase(Constants.UPDATESOURCE.WIDGET_REFRESH_BUTTON.key)) {
+
+                Toast.makeText(getApplicationContext(), getString(R.string.sync_started), Toast.LENGTH_SHORT).show();
+
+            }
+        }
 
         GsonRequest<Queue[]> jsObjRequest = new GsonRequest<>
                 (Request.Method.GET, url, Queue[].class, new Response.Listener<Queue[]>() {
@@ -78,10 +89,19 @@ public class GetDataService extends Service {
                         if(error!=null && error.networkResponse!=null && error.networkResponse.statusCode==401)
                         {
                             Toast.makeText(GetDataService.this, getString(R.string.invalid_creds), Toast.LENGTH_SHORT).show();
-                            return;
+                            stopSelf();;
+                        }
+                        else if(error!=null && error.getMessage()!=null) {
+                            Toast.makeText(GetDataService.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                            stopSelf();;
+                        }
+                        else
+                        {
+                            Toast.makeText(GetDataService.this, getString(R.string.error_occurred), Toast.LENGTH_SHORT).show();
+                            stopSelf();;
                         }
 
-                        stopSelf();
+
 
                     }
                 }, userName, password);

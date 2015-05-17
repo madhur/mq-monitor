@@ -11,4 +11,80 @@
         android:layout_height="wrap_content">
     </android.support.v7.widget.Toolbar>
 
+    <RelativeLayout android:id="@+id/statsLayout" android:layout_marginTop="20dp"
+        android:layout_width="fill_parent" android:paddingLeft="10dp" android:paddingRight="10dp"
+        android:layout_height="wrap_content">
+
+        <TextView android:text="@string/rabbitmq_version" android:id="@+id/textl1"
+        android:layout_width="wrap_content" android:layout_alignParentLeft="true"
+        android:layout_height="wrap_content" />
+
+        <TextView android:text="1.0.1"
+            android:id="@+id/rabbitmqversion"
+            android:layout_width="wrap_content" android:layout_alignParentRight="true"
+            android:layout_height="wrap_content" />
+
+
+        <TextView android:text="@string/erlang_version" android:paddingTop="10dp" android:layout_below="@id/textl1" android:id="@+id/textl2"
+        android:layout_width="wrap_content" android:layout_alignParentLeft="true"
+        android:layout_height="wrap_content" />
+
+        <TextView android:text="1.0.1" android:layout_below="@id/textl1" android:paddingTop="10dp"
+            android:id="@+id/erlangversion"
+            android:layout_width="wrap_content" android:layout_alignParentRight="true"
+            android:layout_height="wrap_content" />
+
+        <TextView android:text="@string/consumers" android:paddingTop="10dp" android:layout_below="@id/textl2" android:id="@+id/textl3"
+            android:layout_width="wrap_content" android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content" />
+
+        <TextView android:text="1.0.1" android:layout_below="@id/textl2" android:paddingTop="10dp"
+            android:id="@+id/consumers"
+            android:layout_width="wrap_content" android:layout_alignParentRight="true"
+            android:layout_height="wrap_content" />
+
+
+        <TextView android:text="@string/queues" android:paddingTop="10dp" android:layout_below="@id/textl3" android:id="@+id/textl4"
+            android:layout_width="wrap_content" android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content" />
+
+        <TextView android:text="1.0.1" android:layout_below="@id/textl3" android:paddingTop="10dp"
+            android:id="@+id/queues"
+            android:layout_width="wrap_content" android:layout_alignParentRight="true"
+            android:layout_height="wrap_content" />
+
+
+        <TextView android:text="@string/exchanges" android:paddingTop="10dp" android:layout_below="@id/textl4" android:id="@+id/textl5"
+            android:layout_width="wrap_content" android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content" />
+
+        <TextView android:text="1.0.1" android:layout_below="@id/textl4" android:paddingTop="10dp"
+            android:id="@+id/exchanges"
+            android:layout_width="wrap_content" android:layout_alignParentRight="true"
+            android:layout_height="wrap_content" />
+
+        <TextView android:text="@string/connections" android:paddingTop="10dp" android:layout_below="@id/textl5" android:id="@+id/textl6"
+            android:layout_width="wrap_content" android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content" />
+
+        <TextView android:text="1.0.1" android:layout_below="@id/textl5" android:paddingTop="10dp"
+            android:id="@+id/connections"
+            android:layout_width="wrap_content" android:layout_alignParentRight="true"
+            android:layout_height="wrap_content" />
+
+
+        <TextView android:text="@string/channels" android:paddingTop="10dp" android:layout_below="@id/textl6" android:id="@+id/textl7"
+            android:layout_width="wrap_content" android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content" />
+
+        <TextView android:text="1.0.1" android:layout_below="@id/textl6" android:paddingTop="10dp"
+            android:id="@+id/channels"
+            android:layout_width="wrap_content" android:layout_alignParentRight="true"
+            android:layout_height="wrap_content" />
+
+
+
+    </RelativeLayout>
+
+
 </LinearLayout>

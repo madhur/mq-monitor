@@ -62,14 +62,14 @@ public class Alarms
     {
         Intent updateIntent=new Intent();
         updateIntent.setAction(Constants.UPDATE_ACTION);
-
+        updateIntent.putExtra(Constants.UPDATE_SOURCE, Constants.UPDATESOURCE.ALARM.key);
         return PendingIntent.getBroadcast(context, REQUEST_CODE_ALARM, updateIntent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
 
     public PendingIntent GetPendingIntentWidget(int requestCode, Context context)
     {
-        return PendingIntent.getBroadcast(context, requestCode, GetIntent(Constants.UPDATESOURCE.ALARM), PendingIntent.FLAG_ONE_SHOT);
+        return PendingIntent.getBroadcast(context, requestCode, GetIntent(Constants.UPDATESOURCE.WIDGET_REFRESH_BUTTON), PendingIntent.FLAG_ONE_SHOT);
     }
 
     private Intent GetIntent(Constants.UPDATESOURCE source)

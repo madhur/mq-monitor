@@ -57,7 +57,7 @@
 
         <ListPreference
             android:defaultValue="@string/sync_interval_default"
-            android:dependency="enable_autosync"
+
             android:entries="@array/sync_interval"
             android:entryValues="@array/sync_interval_values"
             android:key="sync_interval"

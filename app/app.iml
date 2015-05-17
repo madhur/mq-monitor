@@ -93,6 +93,7 @@
     <orderEntry type="library" exported="" name="appcompat-v7-22.1.1" level="project" />
     <orderEntry type="library" exported="" name="material-dialogs-0.7.4.1" level="project" />
     <orderEntry type="library" exported="" name="crittercism-android-agent-5.0.6" level="project" />
+    <orderEntry type="library" exported="" name="eventbus-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-22.1.1" level="project" />
     <orderEntry type="library" exported="" name="volley" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.1.1" level="project" />

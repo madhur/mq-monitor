@@ -20,7 +20,9 @@ import android.widget.LinearLayout;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
+import de.greenrobot.event.EventBus;
 import in.co.madhur.rabbitmonitor.AppPreferences.Keys;
+import in.co.madhur.rabbitmonitor.events.OverviewRefreshEvent;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -107,6 +109,12 @@ public class SettingsActivity extends PreferenceActivity {
         Intent updateIntent = new Intent();
         updateIntent.setAction(Constants.REFRESH_ACTION);
         sendBroadcast(updateIntent);
+
+         updateIntent = new Intent();
+        updateIntent.setAction(Constants.UPDATE_ACTION);
+        sendBroadcast(updateIntent);
+
+        EventBus.getDefault().post(new OverviewRefreshEvent());
 
     }
 
