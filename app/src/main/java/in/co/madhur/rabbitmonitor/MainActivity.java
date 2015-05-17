@@ -96,7 +96,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.action_refresh:
-                refreshStatus();
+                if(Connection.isConnected(this))
+                    refreshStatus();
+                else
+                    Toast.makeText(this, getString(R.string.network_not_available), Toast.LENGTH_SHORT).show();
 
         }
 

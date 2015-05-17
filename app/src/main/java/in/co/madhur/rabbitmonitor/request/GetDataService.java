@@ -13,6 +13,7 @@ import com.android.volley.VolleyError;
 
 import in.co.madhur.rabbitmonitor.App;
 import in.co.madhur.rabbitmonitor.AppPreferences;
+import in.co.madhur.rabbitmonitor.Connection;
 import in.co.madhur.rabbitmonitor.Constants;
 import in.co.madhur.rabbitmonitor.R;
 import in.co.madhur.rabbitmonitor.api.queue.Queue;
@@ -106,7 +107,8 @@ public class GetDataService extends Service {
                     }
                 }, userName, password);
 
-        App.getInstance().getRequestQueue().add(jsObjRequest);
+        if(Connection.isConnected(this))
+            App.getInstance().getRequestQueue().add(jsObjRequest);
 
     }
 

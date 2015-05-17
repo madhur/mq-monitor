@@ -86,6 +86,7 @@ public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory
             view.setTextViewText(R.id.totalTextView, "Total");
             view.setTextViewText(R.id.unackedTextView, "Unack");
             view.setTextViewText(R.id.readyTextView, "Ready");
+
         }
         else
         {
@@ -98,24 +99,26 @@ public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory
                 view.setTextViewText(R.id.unackedTextView, String.valueOf(rowData.getMessagesUnacknowledged()));
                 view.setTextViewText(R.id.readyTextView, String.valueOf(rowData.getMessagesReady()));
 
-                view.setTextColor(R.id.TitleTextView, widgetConfig.getTitleColor());
-                view.setTextColor(R.id.totalTextView, widgetConfig.getCountColor());
-                view.setTextColor(R.id.unackedTextView, widgetConfig.getCountColor());
-                view.setTextColor(R.id.readyTextView, widgetConfig.getCountColor());
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    view.setTextViewTextSize(R.id.TitleTextView, TypedValue.COMPLEX_UNIT_SP, widgetConfig.getTextSize());
-                    view.setTextViewTextSize(R.id.totalTextView, TypedValue.COMPLEX_UNIT_SP, widgetConfig.getTextSize());
-                    view.setTextViewTextSize(R.id.unackedTextView, TypedValue.COMPLEX_UNIT_SP, widgetConfig.getTextSize());
-                    view.setTextViewTextSize(R.id.readyTextView, TypedValue.COMPLEX_UNIT_SP, widgetConfig.getTextSize());
-                } else {
-
-                    view.setFloat(R.id.TitleTextView, "setTextSize", widgetConfig.getTextSize());
-                    view.setFloat(R.id.totalTextView, "setTextSize", widgetConfig.getTextSize());
-                    view.setFloat(R.id.unackedTextView, "setTextSize", widgetConfig.getTextSize());
-                    view.setFloat(R.id.readyTextView, "setTextSize", widgetConfig.getTextSize());
-                }
             }
+        }
+
+        view.setTextColor(R.id.TitleTextView, widgetConfig.getTitleColor());
+        view.setTextColor(R.id.totalTextView, widgetConfig.getCountColor());
+        view.setTextColor(R.id.unackedTextView, widgetConfig.getCountColor());
+        view.setTextColor(R.id.readyTextView, widgetConfig.getCountColor());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            view.setTextViewTextSize(R.id.TitleTextView, TypedValue.COMPLEX_UNIT_SP, widgetConfig.getTextSize());
+            view.setTextViewTextSize(R.id.totalTextView, TypedValue.COMPLEX_UNIT_SP, widgetConfig.getTextSize());
+            view.setTextViewTextSize(R.id.unackedTextView, TypedValue.COMPLEX_UNIT_SP, widgetConfig.getTextSize());
+            view.setTextViewTextSize(R.id.readyTextView, TypedValue.COMPLEX_UNIT_SP, widgetConfig.getTextSize());
+        } else {
+
+            view.setFloat(R.id.TitleTextView, "setTextSize", widgetConfig.getTextSize());
+            view.setFloat(R.id.totalTextView, "setTextSize", widgetConfig.getTextSize());
+            view.setFloat(R.id.unackedTextView, "setTextSize", widgetConfig.getTextSize());
+            view.setFloat(R.id.readyTextView, "setTextSize", widgetConfig.getTextSize());
         }
 
         view.setOnClickFillInIntent(R.id.widget_row, blankIntent);
