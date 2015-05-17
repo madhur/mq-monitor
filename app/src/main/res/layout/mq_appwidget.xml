@@ -12,6 +12,7 @@
         android:contentDescription="@string/app_name"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:paddingTop="@dimen/padding_small"
         android:layout_alignParentLeft="true"
         android:background="@drawable/widget_button"
         android:src="@mipmap/ic_notification" />
@@ -19,6 +20,8 @@
     <TextView
         android:id="@+id/updatedTextView"
         android:paddingTop="@dimen/padding_medium"
+        android:paddingLeft="@dimen/padding_medium"
+        android:text="testing"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/widget_icon" />
@@ -28,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:paddingTop="@dimen/padding_small"
         android:contentDescription="@string/action_settings"
         android:layout_marginRight="15dp"
         android:background="@drawable/widget_button"
@@ -39,6 +43,8 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/action_refresh"
         android:layout_toLeftOf="@id/widget_settings"
+        android:paddingTop="@dimen/padding_small"
+        android:layout_marginRight="15dp"
         android:background="@drawable/widget_button"
         android:src="@mipmap/ic_action_refresh" />
 

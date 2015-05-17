@@ -3,6 +3,7 @@
     package="in.co.madhur.rabbitmonitor" >
 
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application android:name=".App"
         android:allowBackup="true"
@@ -78,6 +79,14 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/mq_widget_small" />
+        </receiver>
+
+        <receiver
+            android:name=".receiver.RefreshReceiver"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="in.co.madhur.ACTION.UPDATE" />
+            </intent-filter>
         </receiver>
 
         <service android:name=".request.GetDataService"></service>

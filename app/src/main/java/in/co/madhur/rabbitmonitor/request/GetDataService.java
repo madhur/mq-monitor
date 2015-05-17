@@ -14,7 +14,6 @@ import in.co.madhur.rabbitmonitor.App;
 import in.co.madhur.rabbitmonitor.AppPreferences;
 import in.co.madhur.rabbitmonitor.Constants;
 import in.co.madhur.rabbitmonitor.R;
-import in.co.madhur.rabbitmonitor.api.Overview;
 import in.co.madhur.rabbitmonitor.api.queue.Queue;
 
 /**
@@ -40,6 +39,8 @@ public class GetDataService extends Service {
         final AppPreferences appPreferences = new AppPreferences(this);
         final String hostName = appPreferences.getMetadata(AppPreferences.Keys.HOSTNAME);
         final String port = appPreferences.getMetadata(AppPreferences.Keys.PORT);
+        final String userName = appPreferences.getMetadata(AppPreferences.Keys.USERNAME);
+        final String password = appPreferences.getMetadata(AppPreferences.Keys.PASSWORD);
 
         if(hostName.length()==0 || port.length()==0)
         {
@@ -51,12 +52,14 @@ public class GetDataService extends Service {
 
         Log.d(Constants.TAG, url);
 
-        GsonRequest<Overview> jsObjRequest = new GsonRequest<>
-                (Request.Method.GET, url, Queue.class, new Response.Listener<Overview>() {
+        GsonRequest<Queue[]> jsObjRequest = new GsonRequest<>
+                (Request.Method.GET, url, Queue[].class, new Response.Listener<Queue[]>() {
 
                     @Override
-                    public void onResponse(Overview response) {
+                    public void onResponse(Queue[] response) {
                         Log.d(Constants.TAG, response.toString());
+
+                        App.getInstance().setQueueData(response);
 
                         stopSelf();
                     }
@@ -64,18 +67,18 @@ public class GetDataService extends Service {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // TODO Auto-generated method stub
-                        if(error==null)
-                            return;
 
-                        if(error.networkResponse!=null && error.networkResponse.statusCode==401)
+
+                        if(error!=null && error.networkResponse!=null && error.networkResponse.statusCode==401)
                         {
                             Toast.makeText(GetDataService.this, getString(R.string.invalid_creds), Toast.LENGTH_SHORT).show();
                             return;
                         }
 
+                        stopSelf();
+
                     }
-                });
+                }, userName, password);
 
         App.getInstance().getRequestQueue().add(jsObjRequest);
 

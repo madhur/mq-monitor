@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         final AppPreferences appPreferences = new AppPreferences(this);
         final String hostName = appPreferences.getMetadata(AppPreferences.Keys.HOSTNAME);
         final String port = appPreferences.getMetadata(AppPreferences.Keys.PORT);
+        final String userName = appPreferences.getMetadata(AppPreferences.Keys.USERNAME);
+        final String password = appPreferences.getMetadata(AppPreferences.Keys.PASSWORD);
 
         if(hostName.length()==0 || port.length()==0)
         {
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // TODO Auto-generated method stub
+
                         if(error==null)
                             return;
 
@@ -98,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                     }
-                });
+                }, userName, password);
 
         App.getInstance().getRequestQueue().add(jsObjRequest);
 

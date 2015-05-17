@@ -198,8 +198,7 @@ public class WidgetProvider extends AppWidgetProvider {
     {
         Intent intent =new Intent();
         intent.setClass(context, SettingsActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-        return pendingIntent;
+        return PendingIntent.getActivity(context, 0, intent, 0);
 
     }
 
@@ -210,8 +209,7 @@ public class WidgetProvider extends AppWidgetProvider {
 
         if (intent != null)
         {
-            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-            return pendingIntent;
+            return PendingIntent.getActivity(context, 0, intent, 0);
         }
 
         return null;

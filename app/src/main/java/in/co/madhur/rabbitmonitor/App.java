@@ -10,6 +10,8 @@ import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
 import com.crittercism.app.Crittercism;
 
+import in.co.madhur.rabbitmonitor.api.queue.Queue;
+
 /**
  * Created by madhur on 4/26/15.
  */
@@ -18,6 +20,16 @@ public class App extends Application {
     private RequestQueue requestQueue;
     private static App instance;
     public static final String TAG="mqmonitor";
+
+    public Queue[] getQueueData() {
+        return queueData;
+    }
+
+    public void setQueueData(Queue[] queueData) {
+        this.queueData = queueData;
+    }
+
+    private Queue[] queueData;
 
     @Override
     public void onCreate() {

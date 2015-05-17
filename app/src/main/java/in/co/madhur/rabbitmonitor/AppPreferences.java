@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
+import in.co.madhur.rabbitmonitor.api.queue.Queue;
+
 /**
  * Created by madhur on 13/05/15.
  */
@@ -12,6 +14,7 @@ public class AppPreferences {
 
     private Context context;
     private SharedPreferences sharedPreferences;
+
 
 
     public AppPreferences(Context context)

@@ -1,6 +1,7 @@
 package in.co.madhur.rabbitmonitor.request;
 
 
+import android.util.Base64;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -13,7 +14,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -23,20 +24,16 @@ public class GsonRequest<T> extends Request<T> {
 
     private Class<T> clazz;
     private Response.Listener<T> listener;
-    private Type typeof;
+    private String userName;
+    private String password;
 
-    public GsonRequest(int method, String url, Class<T> clazz, Response.Listener<T> listener, Response.ErrorListener errorListener) {
+    public GsonRequest(int method, String url, Class<T> clazz, Response.Listener<T> listener, Response.ErrorListener errorListener, String userName, String password) {
         super(method, url, errorListener);
         this.clazz = clazz;
         this.listener = listener;
-        setShouldCache(Boolean.TRUE);
-    }
-
-    public GsonRequest(int method, String url, Type typeof, Response.Listener<T> listener, Response.ErrorListener errorListener) {
-        super(method, url, errorListener);
-        this.typeof = typeof;
-        this.listener = listener;
-        setShouldCache(Boolean.TRUE);
+        setShouldCache(Boolean.FALSE);
+        this.userName = userName;
+        this.password = password;
     }
 
     @Override
@@ -64,7 +61,13 @@ public class GsonRequest<T> extends Request<T> {
 
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
-        return AuthUtil.getBasicAuth();
+        Map<String, String> requestParams = new HashMap<>();
+
+        String creds = String.format("%s:%s", userName, password);
+        String auth = "Basic "
+                + Base64.encodeToString(creds.getBytes(), Base64.NO_WRAP);
+        requestParams.put("Authorization", auth);
+        return requestParams;
     }
 
     @Override

@@ -44,7 +44,7 @@ public class Alarms
     private Intent GetIntent()
     {
         Intent updateIntent=new Intent();
-        updateIntent.setAction(Constants.UPDATE_COUNT_ACTION);
+        updateIntent.setAction(Constants.UPDATE_ACTION);
         return updateIntent;
     }
 
