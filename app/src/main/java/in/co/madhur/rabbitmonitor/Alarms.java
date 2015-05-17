@@ -39,7 +39,7 @@ public class Alarms
     public void Schedule()
     {
         AlarmManager alarmManager=GetAlarmManager(context);
-        long recurInterval=LOWEST_RECUR_INTERVAL*10*60*1000;
+        long recurInterval=LOWEST_RECUR_INTERVAL*30*60*1000;
         alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, 0, recurInterval, GetPendingIntentAlarm(context) );
     }
 

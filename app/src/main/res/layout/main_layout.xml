@@ -29,7 +29,7 @@
         android:layout_width="wrap_content" android:layout_alignParentLeft="true"
         android:layout_height="wrap_content" />
 
-        <TextView android:text="1.0.1" android:layout_below="@id/textl1" android:paddingTop="10dp"
+        <TextView android:text="" android:layout_below="@id/textl1" android:paddingTop="10dp"
             android:id="@+id/erlangversion"
             android:layout_width="wrap_content" android:layout_alignParentRight="true"
             android:layout_height="wrap_content" />
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content" android:layout_alignParentLeft="true"
             android:layout_height="wrap_content" />
 
-        <TextView android:text="1.0.1" android:layout_below="@id/textl2" android:paddingTop="10dp"
+        <TextView android:text="" android:layout_below="@id/textl2" android:paddingTop="10dp"
             android:id="@+id/consumers"
             android:layout_width="wrap_content" android:layout_alignParentRight="true"
             android:layout_height="wrap_content" />
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content" android:layout_alignParentLeft="true"
             android:layout_height="wrap_content" />
 
-        <TextView android:text="1.0.1" android:layout_below="@id/textl3" android:paddingTop="10dp"
+        <TextView android:text="" android:layout_below="@id/textl3" android:paddingTop="10dp"
             android:id="@+id/queues"
             android:layout_width="wrap_content" android:layout_alignParentRight="true"
             android:layout_height="wrap_content" />
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content" android:layout_alignParentLeft="true"
             android:layout_height="wrap_content" />
 
-        <TextView android:text="1.0.1" android:layout_below="@id/textl4" android:paddingTop="10dp"
+        <TextView android:text="" android:layout_below="@id/textl4" android:paddingTop="10dp"
             android:id="@+id/exchanges"
             android:layout_width="wrap_content" android:layout_alignParentRight="true"
             android:layout_height="wrap_content" />
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content" android:layout_alignParentLeft="true"
             android:layout_height="wrap_content" />
 
-        <TextView android:text="1.0.1" android:layout_below="@id/textl5" android:paddingTop="10dp"
+        <TextView android:text="" android:layout_below="@id/textl5" android:paddingTop="10dp"
             android:id="@+id/connections"
             android:layout_width="wrap_content" android:layout_alignParentRight="true"
             android:layout_height="wrap_content" />
@@ -77,7 +77,7 @@
             android:layout_width="wrap_content" android:layout_alignParentLeft="true"
             android:layout_height="wrap_content" />
 
-        <TextView android:text="1.0.1" android:layout_below="@id/textl6" android:paddingTop="10dp"
+        <TextView android:text="" android:layout_below="@id/textl6" android:paddingTop="10dp"
             android:id="@+id/channels"
             android:layout_width="wrap_content" android:layout_alignParentRight="true"
             android:layout_height="wrap_content" />
