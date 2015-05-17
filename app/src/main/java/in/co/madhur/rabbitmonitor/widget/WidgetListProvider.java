@@ -84,7 +84,7 @@ public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory
         {
             view.setTextViewText(R.id.TitleTextView, "Name");
             view.setTextViewText(R.id.totalTextView, "Total");
-            view.setTextViewText(R.id.unackedTextView, "Unacked");
+            view.setTextViewText(R.id.unackedTextView, "Unack");
             view.setTextViewText(R.id.readyTextView, "Ready");
         }
         else

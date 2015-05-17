@@ -14,7 +14,7 @@ public class Constants {
 
     public static final String REFRESH_ACTION="in.co.madhur.ACTION.REFRESH";
 
-
+    public static final String TWITTER_URL="https://twitter.com/intent/user?screen_name=madhur25";
 
 
 }

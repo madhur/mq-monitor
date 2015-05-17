@@ -46,7 +46,7 @@ public class AppPreferences {
         SYNC_INTERVAL("sync_interval"),
         LAST_SUCCESSFUL_SYNC("last_successful_sync"),
         PICK_THEME("pick_theme"),
-
+        ENABLE_AUTOSYNC("enable_autosync"),
         ACTION_ABOUT("action_about"),
         WIDGET_TITLE_COLOR("widget_title_color"),
         WIDGET_COUNT_COLOR("widget_count_color"),
@@ -54,6 +54,7 @@ public class AppPreferences {
         WIDGET_TEXT_SIZE("widget_text_size"),
         WIDGET_OPTIONS("widget_options"),
         ENABLE_WIDGET_HEADER("enable_widget_header"),
+        FOLLOW_TWITTER("follow_twitter"),
         WIDGET_SORT_ORDER("widget_sort_order");
 
         public final String key;
@@ -145,5 +146,12 @@ public class AppPreferences {
         edit.commit();
 
     }
+
+    public boolean IsSyncEnabled()
+    {
+        return sharedPreferences.getBoolean(Keys.ENABLE_AUTOSYNC.key, context.getResources().getBoolean(R.bool.enable_autosync));
+
+    }
+
 
 }

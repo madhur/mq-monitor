@@ -12,13 +12,13 @@ public class Queue {
     @Expose
     private MessageStats messageStats;
     @Expose
-    private Integer messages;
+    private int messages;
     @SerializedName("messages_details")
     @Expose
     private MessagesDetails messagesDetails;
     @SerializedName("messages_ready")
     @Expose
-    private Integer messagesReady;
+    private int messagesReady;
     @SerializedName("messages_ready_details")
     @Expose
     private MessagesReadyDetails messagesReadyDetails;
@@ -52,7 +52,7 @@ public class Queue {
     private String node;
     @SerializedName("messages_unacknowledged")
     @Expose
-    private Integer messagesUnacknowledged;
+    private int messagesUnacknowledged;
     @SerializedName("messages_unacknowledged_details")
     @Expose
     private MessagesUnacknowledgedDetails messagesUnacknowledgedDetails;
@@ -98,7 +98,8 @@ public class Queue {
      * @return
      *     The messages
      */
-    public Integer getMessages() {
+    public int getMessages() {
+
         return messages;
     }
 
@@ -134,7 +135,7 @@ public class Queue {
      * @return
      *     The messagesReady
      */
-    public Integer getMessagesReady() {
+    public int getMessagesReady() {
         return messagesReady;
     }
 
@@ -386,7 +387,7 @@ public class Queue {
      * @return
      *     The messagesUnacknowledged
      */
-    public Integer getMessagesUnacknowledged() {
+    public int getMessagesUnacknowledged() {
         return messagesUnacknowledged;
     }
 

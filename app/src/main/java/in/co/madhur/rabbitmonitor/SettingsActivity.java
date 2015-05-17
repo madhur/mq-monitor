@@ -1,7 +1,11 @@
 package in.co.madhur.rabbitmonitor;
 
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.ListPreference;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -13,6 +17,10 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.afollestad.materialdialogs.MaterialDialog;
+
+import in.co.madhur.rabbitmonitor.AppPreferences.Keys;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -35,11 +43,52 @@ public class SettingsActivity extends PreferenceActivity {
 
     private AppCompatDelegate mDelegate;
 
+    private final Preference.OnPreferenceChangeListener widgetListListener = new Preference.OnPreferenceChangeListener()
+    {
+
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue)
+        {
+            UpdateLabel((ListPreference) preference, newValue.toString());
+            WidgetSettingsChanged();
+            return true;
+        }
+    };
+
+    private final Preference.OnPreferenceChangeListener widgetChangeListener = new Preference.OnPreferenceChangeListener()
+    {
+
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue)
+        {
+            WidgetSettingsChanged();
+            return true;
+        }
+    };
     public ActionBar getSupportActionBar() {
         return getDelegate().getSupportActionBar();
     }
     public void setSupportActionBar(@Nullable Toolbar toolbar) {
         getDelegate().setSupportActionBar(toolbar);
+    }
+
+
+    protected void UpdateLabel(ListPreference listPreference, String newValue)
+    {
+
+        if (newValue == null)
+        {
+            newValue = listPreference.getValue();
+        }
+
+        int index = listPreference.findIndexOfValue(newValue);
+        if (index != -1)
+        {
+            newValue = (String) listPreference.getEntries()[index];
+
+                listPreference.setTitle(newValue);
+        }
+
     }
 
     @Override
@@ -50,6 +99,61 @@ public class SettingsActivity extends PreferenceActivity {
 
 
     }
+
+    private void WidgetSettingsChanged()
+    {
+        // Broadcast intent to update widget
+
+        Intent updateIntent = new Intent();
+        updateIntent.setAction(Constants.REFRESH_ACTION);
+        sendBroadcast(updateIntent);
+
+    }
+
+
+    private void SetWidgetListeners()
+    {
+
+        findPreference(Keys.HOSTNAME.key).setOnPreferenceChangeListener(widgetChangeListener);
+        findPreference(Keys.PORT.key).setOnPreferenceChangeListener(widgetChangeListener);
+        findPreference(Keys.USERNAME.key).setOnPreferenceChangeListener(widgetChangeListener);
+        findPreference(Keys.PASSWORD.key).setOnPreferenceChangeListener(widgetChangeListener);
+
+        findPreference(Keys.WIDGET_BACKGROUND_COLOR.key).setOnPreferenceChangeListener(widgetChangeListener);
+        findPreference(Keys.WIDGET_COUNT_COLOR.key).setOnPreferenceChangeListener(widgetChangeListener);
+        findPreference(Keys.WIDGET_TITLE_COLOR.key).setOnPreferenceChangeListener(widgetChangeListener);
+//        findPreference(Keys.WIDGET_SORT_ORDER.key).setOnPreferenceChangeListener(widgetChangeListener);
+        findPreference(Keys.ENABLE_WIDGET_HEADER.key).setOnPreferenceChangeListener(widgetChangeListener);
+        findPreference(Keys.WIDGET_TEXT_SIZE.key).setOnPreferenceChangeListener(widgetListListener);
+
+        findPreference(Keys.FOLLOW_TWITTER.key).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.TWITTER_URL)));
+                return true;
+            }
+        });
+
+        findPreference(Keys.ACTION_ABOUT.key).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
+        {
+
+            @Override
+            public boolean onPreferenceClick(Preference preference)
+            {
+                new MaterialDialog.Builder(SettingsActivity.this)
+                        .title(R.string.action_about)
+                        .content(R.string.about_content)
+                        .positiveText("OK")
+                        .show();
+
+
+                return true;
+            }
+        });
+
+    }
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -87,7 +191,7 @@ public class SettingsActivity extends PreferenceActivity {
 
         // Add 'general' preferences.
         addPreferencesFromResource(R.xml.pref_general);
-
+        SetWidgetListeners();
 
     }
 

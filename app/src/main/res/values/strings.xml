@@ -180,4 +180,14 @@
 
     <string name="press_color_to_apply">Press on Color to apply</string>
     <string name="dialog_color_picker">Color Picker</string>
+
+    <string name="enable_autosync_desc">Configure feed sync interval. Notification will fire based on this interval</string>
+    <string name="enable_autosync">Auto sync</string>
+    <string name="sync_options">Sync Options</string>
+
+    <string name="action_about">About MQ Q Monitor</string>
+    <string name="action_about_desc">View information about RabbitMQ Q Monitor</string>
+
+    <string name="follow_twitter">Follow me on Twitter</string>
+    <string name="about_content">v1.0 \nDeveloped by Madhur \n\nReport any issues to ahuja.madhur@gmail.com</string>
 </resources>

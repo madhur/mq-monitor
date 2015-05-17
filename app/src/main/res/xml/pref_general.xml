@@ -52,6 +52,24 @@
 
     <!--</PreferenceCategory>-->
 
+    <PreferenceCategory android:title="@string/sync_options">
+        <CheckBoxPreference
+            android:defaultValue="@bool/enable_autosync"
+            android:key="enable_autosync"
+            android:summary="@string/enable_autosync_desc"
+            android:title="@string/enable_autosync" />
+
+        <ListPreference
+            android:defaultValue="@string/sync_interval_default"
+            android:dependency="enable_autosync"
+            android:entries="@array/sync_interval"
+            android:entryValues="@array/sync_interval_values"
+            android:key="sync_interval"
+            android:summary="@string/sync_interval_desc"
+            android:title="@string/sync_interval" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory
         android:key="widget_options"
         android:title="@string/widget_configuration" android:summary="@string/widget_configuration_desc">
@@ -104,6 +122,16 @@
 
 
         </net.margaritov.preference.colorpicker.ColorPickerPreference>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/action_about" >
+        <Preference
+            android:key="action_about"
+            android:summary="@string/action_about_desc"
+            android:title="@string/action_about" />
+        <Preference
+            android:key="follow_twitter"
+            android:title="@string/follow_twitter" />
     </PreferenceCategory>
 
 

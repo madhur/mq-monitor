@@ -9,11 +9,11 @@
 
     <TextView
         android:id="@+id/TitleTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:text="testiong"
-        android:ellipsize="end"
+        android:ellipsize="marquee"
         android:maxLines="1"
         android:paddingLeft="@dimen/padding_small"
         android:textSize="17sp" />
@@ -22,7 +22,7 @@
 
     <TextView
         android:id="@+id/totalTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="fill_parent"
         android:layout_alignParentRight="true"
         android:paddingRight="@dimen/padding_medium"
@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/unackedTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="fill_parent"
         android:layout_toLeftOf="@id/totalTextView"
         android:paddingRight="@dimen/padding_medium"
@@ -41,7 +41,7 @@
 
     <TextView
         android:id="@+id/readyTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="fill_parent"
         android:layout_toLeftOf="@id/unackedTextView"
         android:paddingRight="@dimen/padding_medium"
