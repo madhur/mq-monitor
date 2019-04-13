@@ -14,7 +14,7 @@
         android:layout_alignParentLeft="true"
         android:text="testiong"
         android:ellipsize="marquee"
-        android:maxLines="1"
+        android:singleLine="true"
         android:paddingLeft="@dimen/padding_small"
         android:textSize="17sp" />
 
