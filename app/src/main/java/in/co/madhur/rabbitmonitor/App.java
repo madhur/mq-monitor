@@ -8,7 +8,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
-import com.crittercism.app.Crittercism;
 
 import in.co.madhur.rabbitmonitor.api.queue.Queue;
 
@@ -34,12 +33,6 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        if(!BuildConfig.DEBUG)
-        {
-            Crittercism.initialize(this, "526e3508e432f557fe000008");
-        }
-
         instance = this;
     }
 
